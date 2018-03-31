@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Libre+Baskerville:400,400i");
+
+@mixin primary-header-font {
+    font-family: "Fira Mono", monospace;
+    font-size: 1.5rem;
+}
+
+@mixin secondary-header-font {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+@mixin code-font {
+    font-family: "Fira Mono", monospace;
+}
+
+@mixin body-font {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+}
+
+@mixin aside-font {
+    font-family: "Libre Baskerville", serif;
+    font-style: italic;
+    font-size: 1rem;
+}

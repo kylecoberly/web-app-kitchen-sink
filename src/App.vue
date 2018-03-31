@@ -1,29 +1,38 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <header>
+            <h1>Web App Kitchen Sink</h1>
+        </header>
+        <main>
+            <router-view/>
+        </main>
+        <footer>&copy; Kyle Coberly, 2018 &mdash; MIT License</footer>
     </div>
-    <router-view/>
-  </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+    @import "~@/styles/_resets";
+    @import "~@/styles/_colors";
+    @import "~@/styles/_typography";
+
+    header {
+        background-color: $primary-color-medium-dark;
+        padding: 0.5rem 1rem;
+        color: $white;
+        h1 {
+            @include primary-header-font;
+        }
     }
-  }
-}
+    main {
+        @include body-font;
+        width: 100%;
+        min-height: calc(100vh - 5rem - 3rem);
+    }
+    footer{
+        @include aside-font;
+        background-color: $primary-color-dark;
+        color: $white;
+        padding: 2.5rem 1rem 1.5rem 1rem;
+        text-align: right;
+    }
 </style>
