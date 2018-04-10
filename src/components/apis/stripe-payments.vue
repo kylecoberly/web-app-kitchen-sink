@@ -6,12 +6,14 @@ This is front-end stripe payments commentary: templates
 <div class="stripe">
     <form action="/charge" method="post" id="payment-form">
         <label for="name">Name</label>
-        <input id="name" placeholder="Kyle Coberly" type="text" required="requred" />
+        <input id="name" name="name" placeholder="Kyle Coberly" type="text" required="requred" />
         <label for="amount">Dollars</label>
-        <input id="amount" min="1" placeholder="$5" type="number" required="required" />
+        <input id="amount" name="amount" min="1" placeholder="$5" type="number" required="required" />
         <label for="card-element">Card</label>
+        <input name="description" type="hidden" value="Hard coded description" />
         <div id="card-element"></div>
         <div id="card-errors" role="alert"></div>
+        <div id="card-message"></div>
         <input type="submit" value="Submit Payment" />
     </form>
 </div>
@@ -24,43 +26,71 @@ This is front-end stripe payments commentary: templates
 /* waks:start=Code is Here=start
 This is front-end stripe payments commentary: code
 waks:example */
+const clientKey = "pk_test_K23BCqS1ExD17Jr4blcPGq1t";
+const stripe = Stripe(clientKey);
+const elements = stripe.elements();
+const card = elements.create("card");
+
+const $errors = document.querySelector("#card-errors");
+const $card = document.querySelector("#card-element");
+const $payment = document.querySelector("#payment-form");
+const $message = document.querySelector("#card-message");
+
 (function initializeStripe(clientKey){
-    const stripe = Stripe(clientKey);
-    const elements = stripe.elements();
-    const card = elements.create("card");
-    card.mount("#card-element")
+    card.mount($card)
     card.addEventListener("change", onCardChange);
-    document.querySelector("#payment-form")
-        .addEventListener("submit", submitPaymentForm);
-})("pk_test_K23BCqS1ExD17Jr4blcPGq1t");
+    $payment.addEventListener("submit", submitPaymentForm);
+})();
 
 function submitPaymentForm(event){
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    stripe.createToken(card).then(result => {
+    stripe.createToken(card).then(tokenHandler);
+
+    function tokenHandler(result){
         result.error
-            ? document.querySelector("#card-errors").textContent = result.error.message
+            ? displayError(result.error.message)
             : sendStripePayment({
                 name: formData.get("name"),
-                amount: formData.get("amount"),
-                token: result.token
+                description: formData.get("description"),
+                amount: formData.get("amount") * 100,
+                token: result.token.id
             });
-    });
+    }
 }
+
 function onCardChange(event){
-    document.querySelector("#card-errors").textContent = event.error
+    $errors.textContent = event.error
         ? event.error.message
         : "";
 }
+
 function sendStripePayment(parameters){
-    fetch("https://web-app-kitchen-sink-api.herokuapp.com/apis/stripe-payments", {
+    const paymentURL = "https://web-app-kitchen-sink-api.herokuapp.com/apis/stripe-payments";
+    fetch(paymentURL, {
         method: "POST",
+        headers: new Headers({
+            "Content-Type": "application/json"
+        }),
         body: JSON.stringify(parameters)
-    }).then(console.log)
-    .catch(error => {
+    }).then(response => response.json())
+    .then(({data, error}) => {
+        error
+            ? displayError(error)
+            : displayMessage(data.outcome.seller_message);
+    }).catch(error => {
+        displayError(error.message);
         throw new Error(error);
     });
+}
+
+function displayMessage(message){
+    $message.textContent = message;
+}
+
+function displayError(message){
+    $errors.textContent = message;
 }
 /* waks:end */
         }
@@ -126,6 +156,11 @@ waks:example */
             margin-top: 1rem;
             font-size: 1rem;
             color: hsl(0, 50%, 50%);
+        }
+        #card-message {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: $grey;
         }
     }
 }

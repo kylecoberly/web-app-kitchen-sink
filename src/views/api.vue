@@ -16,6 +16,9 @@
             Store.dispatch("closeNavigation");
             next();
         },
+        created(){
+            this.$store.dispatch("getAnnotatedExamples", {label: "stripe-payments"});
+        },
         computed: {
             annotatedExamples(){
                 return this.$store.state.annotatedExamples;

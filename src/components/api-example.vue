@@ -9,7 +9,7 @@
                 <annotated-example
                     :heading="annotatedExample.heading"
                     :annotation="annotatedExample.annotation"
-                    :code="annotatedExample.code"
+                    :code="annotatedExample.example"
                 ></annotated-example>
             </li>
         </ul>

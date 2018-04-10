@@ -1,5 +1,5 @@
 <template>
-    <pre v-highlightjs="code"><code class="javascript"></code></pre>
+    <pre v-highlightjs="code"><code></code></pre>
 </template>
 
 <script>

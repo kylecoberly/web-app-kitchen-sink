@@ -42,17 +42,9 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        pre {
-            flex: 1;
-            max-width: $column-width;
-            @media (max-width: $medium-breakpoint) {
-                flex: initial;
-            }
-        }
         section {
-            flex: 1;
+            flex: 0.7;
             padding-right: 3rem;
-            max-width: $column-width;
             @media (max-width: $medium-breakpoint) {
                 flex: initial;
             }
@@ -61,6 +53,13 @@
             }
             .annotation {
                 @include body-font;
+            }
+        }
+        pre {
+            flex: 1.3;
+            max-width: 50rem;
+            @media (max-width: $medium-breakpoint) {
+                flex: initial;
             }
         }
     }
