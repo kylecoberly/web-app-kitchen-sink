@@ -1,21 +1,21 @@
-/* waks:start=HTML Form=start
+/* waks:start=HTML Form=start */
 This is front-end stripe payments commentary: templates
-*/
+
 <template>
-    <!-- waks:example -->
-    <div class="stripe">
-        <form action="/charge" method="post" id="payment-form">
-            <label for="name">Name</label>
-            <input id="name" placeholder="Kyle Coberly" type="text" required="requred" />
-            <label for="amount">Dollars</label>
-            <input id="amount" min="1" placeholder="$5" type="number" required="required" />
-            <label for="card-element">Card</label>
-            <div id="card-element"></div>
-            <div id="card-errors" role="alert"></div>
-            <input type="submit" value="Submit Payment" />
-        </form>
-    </div>
-    <!-- waks:end -->
+<!-- waks:example -->
+<div class="stripe">
+    <form action="/charge" method="post" id="payment-form">
+        <label for="name">Name</label>
+        <input id="name" placeholder="Kyle Coberly" type="text" required="requred" />
+        <label for="amount">Dollars</label>
+        <input id="amount" min="1" placeholder="$5" type="number" required="required" />
+        <label for="card-element">Card</label>
+        <div id="card-element"></div>
+        <div id="card-errors" role="alert"></div>
+        <input type="submit" value="Submit Payment" />
+    </form>
+</div>
+<!-- waks:end -->
 </template>
 
 <script>
