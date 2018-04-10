@@ -1,28 +1,46 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Libre+Baskerville:400,400i");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,400i");
 
 @mixin primary-header-font {
-    font-family: "Fira Mono", monospace;
+    font-family: "Roboto Mono", monospace;
     font-size: 1.5rem;
 }
 
 @mixin secondary-header-font {
-    font-family: "Libre Baskerville", serif;
-    font-size: 1.8rem;
+    font-family: "Roboto", serif;
+    font-size: 2.8rem;
+    font-weight: 400;
     margin-bottom: 1.5rem;
 }
 
-@mixin code-font {
-    font-family: "Fira Mono", monospace;
+@mixin tertiary-header-font {
+    font-family: "Roboto", serif;
+    font-size: 2.0rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
 }
 
-@mixin body-font {
-    font-family: "Libre Baskerville", serif;
-    font-size: 1.3rem;
+@mixin navigation-link-font {
+    font-family: "Roboto", serif;
+    font-size: 1.0rem;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+@mixin code-font {
+    font-family: "Roboto Mono", monospace;
+    font-size: 1.1rem;
     line-height: 1.8rem;
 }
 
+@mixin body-font {
+    font-family: "Roboto", serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 2.2rem;
+}
+
 @mixin aside-font {
-    font-family: "Libre Baskerville", serif;
+    font-family: "Roboto", serif;
     font-style: italic;
     font-size: 1rem;
 }
