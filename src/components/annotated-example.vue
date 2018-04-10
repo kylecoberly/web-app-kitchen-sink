@@ -31,7 +31,7 @@
     };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     @import "~@/styles/_colors";
     @import "~@/styles/_typography";
     $medium-breakpoint: 800px;
@@ -53,6 +53,19 @@
             }
             .annotation {
                 @include body-font;
+                ul {
+                    list-style: circle;
+                    margin-left: 2rem;
+                    margin-bottom: 2rem;
+                }
+                ol {
+                    list-style: decimal;
+                    margin-left: 2rem;
+                    margin-bottom: 2rem;
+                }
+                code {
+                    @include code-font;
+                }
             }
         }
         pre {

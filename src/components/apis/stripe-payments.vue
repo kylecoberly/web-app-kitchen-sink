@@ -55,7 +55,7 @@ One important gotcha: the token that gets created has a lot of data on it. **The
 waks:example */
 // DOM elements we'll use
 const $cardElement = document.querySelector("#card-element");
-const $paymentForm = document.querySelector("#payment-form");
+const $paymentForm = document.querySelector("form");
 const $message = document.querySelector("#message");
 const $errors = document.querySelector("#errors");
 
@@ -140,7 +140,7 @@ function displayMessage(message, isError){
 <style scoped lang="scss">
 @import "~@/styles/_colors";
 
-/* waks:start=Styles ()=start
+/* waks:start=Styles=start
 The style on the form is basic form styling. The only exception is the element that's created by Stripe, which has the `.StripeElement` class and a few helper classes as seen below.
 waks:example */
 .stripe {
@@ -177,9 +177,9 @@ waks:example */
         // These classes are created by Stripe and added
         // to the credit card input element
         .StripeElement {
-            background-color: $white;
+            background-color: $pure-white;
             height: 2.5rem;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             border-radius: 4px;
             box-shadow: 0px 0px 4px $light-grey;
         }

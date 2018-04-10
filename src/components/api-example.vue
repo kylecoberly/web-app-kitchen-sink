@@ -34,13 +34,16 @@
 </script>
 
 <style scoped lang="scss">
+    @import "~@/styles/_typography";
+
     .api-example {
         padding: 2rem 1rem;
         flex-grow: 1;
         max-width: 100%;
         h2 {
-            margin-top: 2rem;
+            margin-top: 1rem;
             text-align: center;
+            @include secondary-header-font;
         }
         .api-integration {
             display: flex;
