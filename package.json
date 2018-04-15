@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "npm run build && firebase deploy",
     "test": "vue-cli-service test",
     "e2e": "vue-cli-service e2e",
     "e2e:open": "vue-cli-service e2e:open"
