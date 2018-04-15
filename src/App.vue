@@ -12,6 +12,11 @@
                             Stripe Payments
                         </router-link>
                     </li>
+                    <li>
+                        <router-link :to="{name: 'apis', params: {component: 's3-uploads'}}">
+                            S3 File Uploads
+                        </router-link>
+                    </li>
                 </ul>
             </nav>
             <router-view/>

@@ -7,6 +7,7 @@ Before you start, you need to setup your bucket on S3.
 4. Next, go to the IAM service on AWS, then go to "Users", then "Add User."
 5. Add a descriptive name for the user, choose the "Programmatic Access" option, and go to the next step.
 6. Copy the "Access key ID" and the "Secret access key" to your environment - it's the last opportunity to see them, so don't wait.
+7. Click on "Bucket Policy". We're going to add the ARN for your user to the policy for this bucket, which gives them access.
 <!-- waks:example -->
 <template>
 <div class="s3">
@@ -16,7 +17,7 @@ Before you start, you need to setup your bucket on S3.
 
         <input type="submit" value="Upload File" />
 
-        <div id="errors"></div>
+        <div id="error"></div>
         <div id="message"></div>
     </form>
 </div>
@@ -31,12 +32,17 @@ waks:example */
 document.querySelector("form").addEventListener("submit", event => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch("http://localhost:3000/upload", {
+    fetch("https://web-app-kitchen-sink-api.herokuapp.com/apis/s3-uploads/upload", {
         method: "POST",
         body: formData,
         "Content-Type": "multipart/form-data"
-    }).then(response => response.text()).then(response => {
-        console.log(response);
+    }).then(response => response.json())
+    .then(({data}) => {
+        document.querySelector("#message").innerHTML = `
+            <p>File was uploaded to: <a href="${data}">${data}<a></p>
+        `;
+    }).catch(error => {
+        document.querySelector("#error").textContent = error.message;
     });
 });
 

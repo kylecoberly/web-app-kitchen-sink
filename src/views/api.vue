@@ -1,8 +1,9 @@
 <template>
     <api-example
-         :component="$route.params.component"
-         :annotatedExamples="annotatedExamples"
-         :heading="'Payments with Stripe'"
+        :component="$route.params.component"
+        :api="currentAPI"
+        :loading="loading"
+        :networkError="networkError"
     ></api-example>
 </template>
 
@@ -16,12 +17,39 @@
             Store.dispatch("closeNavigation");
             next();
         },
+        beforeRouteUpdate: (to, from, next) => {
+            Store.dispatch("closeNavigation");
+            next();
+        },
+        watch: {
+            "$route": "setCurrentAPI"
+        },
         created(){
-            this.$store.dispatch("getAnnotatedExamples", {label: "stripe-payments"});
+            this.setCurrentAPI();
+        },
+        data(){
+            return {
+                networkError: null,
+                loading: true
+            };
         },
         computed: {
-            annotatedExamples(){
-                return this.$store.state.annotatedExamples;
+            currentAPI(){
+                return this.$store.state.currentAPI;
+            }
+        },
+        methods: {
+            setCurrentAPI(){
+                this.loading = true;
+                this.$store.dispatch("clearCurrentAPI");
+                this.$store.dispatch("setCurrentAPI", this.$route.params.component)
+                    .then(result => {
+                        this.loading = false;
+                    }).catch(error => {
+                        this.loading = false;
+                        console.log(error);
+                        this.networkError = error.message;
+                    });
             }
         }
     };

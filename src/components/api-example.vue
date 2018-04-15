@@ -1,11 +1,19 @@
 <template>
     <section class="api-example">
-        <h2>{{heading}}</h2>
+        <h2>{{api.heading}}</h2>
         <div class="api-integration">
             <component :is="component"></component>
         </div>
-        <ul>
-            <li v-for="annotatedExample in annotatedExamples">
+        <div v-if="loading" class="loading-spinner">
+            <fingerprint-spinner
+                :animation-duration="2000"
+                :size="100"
+                :color="'#999'"
+            />
+        </div>
+        <p v-else-if="networkError">Error: {{networkError}}</p>
+        <ul v-else>
+            <li v-for="annotatedExample in api.annotatedExamples">
                 <annotated-example
                     :heading="annotatedExample.heading"
                     :annotation="annotatedExample.annotation"
@@ -18,18 +26,23 @@
 
 <script>
     import StripePayments from "@/components/apis/stripe-payments";
+    import S3Uploads from "@/components/apis/s3-uploads";
     import AnnotatedExample from "@/components/annotated-example";
+    import {FingerprintSpinner} from "epic-spinners";
 
     export default {
         components: {
-            "annotatedExample": AnnotatedExample,
-            "stripePayments": StripePayments
+            AnnotatedExample,
+            S3Uploads,
+            StripePayments,
+            FingerprintSpinner
         },
         props: {
-            annotatedExamples: Array,
             component: String,
-            heading: String
-        }
+            api: Object,
+            loading: Boolean,
+            networkError: String
+        },
     };
 </script>
 
@@ -46,6 +59,11 @@
             @include secondary-header-font;
         }
         .api-integration {
+            display: flex;
+            justify-content: center;
+        }
+        .loading-spinner {
+            padding: 2rem;
             display: flex;
             justify-content: center;
         }

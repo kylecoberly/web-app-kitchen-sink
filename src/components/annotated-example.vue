@@ -16,7 +16,7 @@
 
     export default {
         components: {
-            codeExample: CodeExample
+            CodeExample
         },
         props: {
             heading: String,
