@@ -52,7 +52,7 @@
     .api-example {
         padding: 2rem 1rem;
         flex-grow: 1;
-        max-width: 100%;
+        overflow-x: auto;
         h2 {
             margin-top: 1rem;
             text-align: center;

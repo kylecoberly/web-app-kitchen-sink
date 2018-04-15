@@ -70,7 +70,7 @@
     }
     main {
         @include body-font;
-        width: 100%;
+        position: relative;
         min-height: calc(100vh - 5rem - 3rem);
         display: flex;
         nav {

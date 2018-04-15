@@ -65,8 +65,7 @@ waks:example */
             font-size: 1rem;
         }
         input {
-            height: 2.5rem;
-            padding: 0.5rem 1rem;
+            padding: 1.5rem 1rem;
             width: 100%;
             border: none;
             box-shadow: 0px 0px 4px $light-grey;
