@@ -38,7 +38,7 @@
     $column-width: 42rem;
 
     .annotated-example {
-        padding: 2rem 1rem;
+        padding: 2rem 0rem;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -62,6 +62,9 @@
                     list-style: decimal;
                     margin-left: 2rem;
                     margin-bottom: 2rem;
+                }
+                li {
+                    margin-bottom: 0.5rem;
                 }
                 code {
                     @include code-font;

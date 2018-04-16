@@ -1,9 +1,15 @@
 <template>
     <section class="api-example">
-        <h2>{{api.heading}}</h2>
-        <div class="api-integration">
-            <component :is="component"></component>
-        </div>
+        <header>
+            <api-details
+                 :heading="api.heading"
+                 :links="api.links"
+                 :description="api.description"
+            ></api-details>
+            <div class="api-integration">
+                <component :is="component"></component>
+            </div>
+        </header>
         <div v-if="loading" class="loading-spinner">
             <fingerprint-spinner
                 :animation-duration="2000"
@@ -28,11 +34,13 @@
     import StripePayments from "@/components/apis/stripe-payments";
     import S3Uploads from "@/components/apis/s3-uploads";
     import AnnotatedExample from "@/components/annotated-example";
+    import ApiDetails from "@/components/api-details";
     import {FingerprintSpinner} from "epic-spinners";
 
     export default {
         components: {
             AnnotatedExample,
+            ApiDetails,
             S3Uploads,
             StripePayments,
             FingerprintSpinner
@@ -49,18 +57,33 @@
 <style scoped lang="scss">
     @import "~@/styles/_typography";
 
+    $medium-breakpoint: 800px;
+    $column-width: 42rem;
+
     .api-example {
-        padding: 2rem 1rem;
+        padding: 2rem;
         flex-grow: 1;
         overflow-x: auto;
-        h2 {
-            margin-top: 1rem;
-            text-align: center;
-            @include secondary-header-font;
-        }
-        .api-integration {
+        > header {
             display: flex;
-            justify-content: center;
+            flex-flow: row wrap;
+            .api-details {
+                order: 2;
+                flex: 0.7;
+                width: 100%;
+                @media (max-width: $medium-breakpoint) {
+                    flex: initial;
+                }
+            }
+            .api-integration {
+                order: 1;
+                flex: 1.3;
+                display: flex;
+                justify-content: center;
+                @media (max-width: $medium-breakpoint){
+                    order: 3;
+                }
+            }
         }
         .loading-spinner {
             padding: 2rem;
