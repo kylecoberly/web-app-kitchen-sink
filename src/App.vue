@@ -23,10 +23,10 @@
         </main>
         <footer>
             <ul>
-                <li>Link 1</li>
-                <li>Link 1</li>
+                <li><a href="https://github.com/kylecoberly/web-app-kitchen-sink" target="_BLANK">Client source code</a></li>
+                <li><a href="https://github.com/kylecoberly/web-app-kitchen-sink-api" target="_BLANK">Server source code</a></li>
             </ul>
-            <p>&copy; Kyle Coberly, 2018 &mdash; MIT License</p>
+            <p>&copy; <a href="https://kylecoberly.com" target="_BLANK">Kyle Coberly</a>, 2018 &mdash; MIT License</p>
         </footer>
     </div>
 </template>
@@ -56,66 +56,71 @@
     @import "~@/styles/_colors";
     @import "~@/styles/_typography";
 
-    header {
-        background-color: $primary-color-medium-dark;
-        padding: 0.5rem 1rem;
-        color: $white;
-        h1 {
-            @include primary-header-font;
-            a {
-                color: inherit;
-                text-decoration: none;
-            }
-        }
-    }
-    main {
-        @include body-font;
-        position: relative;
-        min-height: calc(100vh - 5rem - 3rem);
-        display: flex;
-        nav {
-            flex-basis: 0;
-            transition: all 0.2s;
+    #app {
+        > header {
             background-color: $primary-color-medium-dark;
-            position: relative;
-            width: 0;
-            &.open {
-                flex-basis: 12rem;
-                ul {
-                    display: block;
+            padding: 0.5rem 1rem;
+            color: $white;
+            h1 {
+                @include primary-header-font;
+                a {
+                    color: inherit;
+                    text-decoration: none;
                 }
             }
-            ul {
-                display: none;
-                padding: 1rem;
-                a {
-                    @include navigation-link-font;
-                    color: $white;
-                    &:visited {
-                        color: $light-grey;
+        }
+        > main {
+            @include body-font;
+            position: relative;
+            min-height: calc(100vh - 5rem - 3rem);
+            display: flex;
+            nav {
+                flex-basis: 0;
+                transition: all 0.2s;
+                background-color: $primary-color-medium-dark;
+                position: relative;
+                width: 0;
+                &.open {
+                    flex-basis: 12rem;
+                    ul {
+                        display: block;
                     }
                 }
-            }
-            .navigation-toggle {
-                position: absolute;
-                right: -4rem;
-                color: black;
+                ul {
+                    display: none;
+                    padding: 1rem;
+                    a {
+                        @include navigation-link-font;
+                        color: $white;
+                        &:visited {
+                            color: $light-grey;
+                        }
+                    }
+                }
+                .navigation-toggle {
+                    position: absolute;
+                    right: -4rem;
+                    color: black;
+                }
             }
         }
-    }
-    footer {
-        @include aside-font;
-        background-color: $primary-color-dark;
-        color: $white;
-        padding: 2rem;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        ul {
-            grid-area: "links";
-        }
-        p {
-            grid-area: "copyright";
+        > footer {
+            @include aside-font;
+            background-color: $primary-color-dark;
+            color: $white;
+            padding: 2rem;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            ul {
+                grid-area: "links";
+            }
+            p {
+                grid-area: "copyright";
+            }
+            a {
+                color: $white;
+            }
         }
     }
 </style>

@@ -1,6 +1,9 @@
 <template>
     <section class="index">
-        <p>The web app kitchen sink is a collection of coding, design, and integration patterns for use in web apps.</p>
+        <div>
+        <p>Have you ever tried to integrate an API into your web app, but found that the documentation covered so many things, it may as well have covered nothing? Sometimes what you really need are examples and explanations.</p>
+        <p>The web app kitchen sink is a collection of coding, design, and integration patterns for use in web apps. Feel free to use them for your own projects or study. All of the examples on the site are read live out of the source code via the Github API and the WAKS markup language.</p>
+        </div>
     </section>
 </template>
 
@@ -26,7 +29,6 @@
         p {
             margin-bottom: 1rem;
             max-width: 40rem;
-            text-align: center;
         }
         h2 {
             @include secondary-header-font;
