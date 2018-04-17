@@ -1,9 +1,10 @@
 /* waks:start=HTML Form=start */
-The form uses a `file` upload type. Note that these look different from browser to browser, and can be hard to style directly. You can use the `File` API for more fine-grained control.
+Two things to note on this: make sure to use `enctype="multipart/form-data"` on the form element, and set the input type to "file."
 <!-- waks:example -->
 <template>
 <div class="s3">
-    <form>
+    <!-- Important! Your server can only process files with this enctype -->
+    <form enctype="multipart/form-data">
         <label for="file">File</label>
         <input id="file" name="file" type="file" required />
 
@@ -31,22 +32,24 @@ document.querySelector("form").addEventListener("submit", event => {
 
     // Upload endpoint on the server
     const URL = "https://web-app-kitchen-sink-api.herokuapp.com/apis/s3-uploads/upload";
+    const formData = new FormData(event.target);
     fetch(URL, {
         method: "POST",
-        body: new FormData(event.target), // The body will be the uploaded file
-        headers: {
-            // Important! Your server can only process files with this type
-            "Content-Type": "multipart/form-data"
-        }
+        // This contains the file to be uploaded
+        body: new FormData(event.target)
     }).then(response => response.json())
-    .then(({data}) => {
-        // Show the URL of the uploaded file
-        $message.innerHTML = `
-            <p>File was uploaded to: <a href="${data}">${data}<a></p>
-        `;
+    .then(({data, error}) => {
+        const message = error
+            // If there was an error, show it
+            ? `There was an error: ${error}`
+            // Otherwise, show the URL of the uploaded file
+            : `File was uploaded to: <a href="${data}">${data}</a>`
+        $message.innerHTML = `<p>${message}</p>`;
     }).catch(error => {
         // If there was a problem, show the error message
-        $message.textContent = error.message;
+        $message.innerHTML = `
+            <p>There was an error: ${error.message}</p>
+        `;
     });
 });
 /* waks:end */
@@ -58,7 +61,7 @@ document.querySelector("form").addEventListener("submit", event => {
 @import "~@/styles/_colors";
 
 /* waks:start=Styles=start
-Basic form styling.
+Basic form styling. The form uses a `file` upload type- note that these look different from browser to browser, and can be hard to style directly. You can use the `File` API for more fine-grained control.
 waks:example */
 .s3 {
     padding: 1rem;
