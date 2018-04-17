@@ -49,8 +49,6 @@ Stripe's credit card input form is not a normal input field. It does lots of fra
 
 To get your client-side key, create a Stripe account and get it from the Stripe dashboard in the developer section. Note that there are 2 sets of keys (production and test), and 2 keys in each of them (client and server). Your client key can be published, your server should not be. Use the test keys in development and testing to prevent making any actual charges.
 
-Note that you can test a stripe credit card form with `4242 4242 4242 4242 4/24 242` to do a fake transaction (try it above!). There are other numbers that will simulate specific types of transactions.
-
 One important gotcha: the token that gets created has a lot of data on it. **The only thing you should send to the server is the `id` from it.**
 waks:example */
 // DOM elements we'll use

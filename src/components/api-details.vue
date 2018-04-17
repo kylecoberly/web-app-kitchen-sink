@@ -25,14 +25,13 @@
     @import "~@/styles/_typography";
 
     .api-details {
-        background-color: lighten($primary-color-light, 30%);
+        background-color: lighten($primary-color-light, 45%);
         padding: 1rem 2rem;
         ul {
             text-align: right;
         }
         h2 {
             margin-top: 1rem;
-            text-align: center;
             @include secondary-header-font;
         }
     }

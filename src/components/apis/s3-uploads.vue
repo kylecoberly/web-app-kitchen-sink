@@ -19,6 +19,7 @@ The form uses a `file` upload type. Note that these look different from browser 
     export default {
         mounted(){
 /* waks:start=Client-Side Code=start
+When the upload form submits, you intercept and interrupt the request. Make a `POST` request to your server, and then display the success message or error when it comes back. Note that you *must* send the message as `multipart/form-data`, or the server won't process it!
 waks:example */
 // Store the message element
 const $message = document.querySelector("#message");
@@ -32,7 +33,7 @@ document.querySelector("form").addEventListener("submit", event => {
     const URL = "https://web-app-kitchen-sink-api.herokuapp.com/apis/s3-uploads/upload";
     fetch(URL, {
         method: "POST",
-        body: FormData(event.target), // The body will be the uploaded file
+        body: new FormData(event.target), // The body will be the uploaded file
         headers: {
             // Important! Your server can only process files with this type
             "Content-Type": "multipart/form-data"

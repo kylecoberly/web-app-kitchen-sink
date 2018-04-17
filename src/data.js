@@ -1,7 +1,7 @@
 export default [{
     label: "stripe-payments",
     heading: "Payments with Stripe",
-    description: "Stripe allows you to process credit card payments in your app. It gives you a simple set of tools for collecting and securing user payment data, and gives you a dashboard for monitoring payments and extracting money. This demo shows you how to collect payment and related information, send it to a server for processing, and add it to your Stripe account.",
+    description: "Stripe allows you to process credit card payments in your app. It gives you a simple set of tools for collecting and securing user payment data, and gives you a dashboard for monitoring payments and extracting money. This demo shows you how to collect payment and related information, send it to a server for processing, and add it to your Stripe account.  Note that you can test a stripe credit card form with `4242 4242 4242 4242 4/24 242` to do a fake transaction (try it above!). There are other numbers that will simulate specific types of transactions.",
     links: [{
         label: "Quickstart",
         url: "https://stripe.com/docs/stripe-js/elements/quickstart"
