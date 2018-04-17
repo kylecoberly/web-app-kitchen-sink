@@ -63,6 +63,7 @@
     .api-example {
         padding: 2rem;
         flex-grow: 1;
+        flex-basis: 0;
         overflow-x: auto;
         > header {
             display: flex;
