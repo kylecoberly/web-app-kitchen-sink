@@ -38,21 +38,5 @@
         ul {
             width: 100%;
         }
-        .content {
-            position: relative;
-            &::after {
-                content: "";
-                background-image: url(/img/kitchen-sink.svg);
-                background-repeat: no-repeat;
-                z-index: -1;
-                opacity: 0.1;
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                transform: scale(1.5);
-            }
-        }
     }
 </style>
