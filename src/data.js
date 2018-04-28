@@ -28,4 +28,11 @@ export default [{
         url: "https://www.npmjs.com/package/multer-s3"
     }],
     annotatedExamples: null
+},{
+    label: "social-auth",
+    heading: "Logging in with Facebook",
+    description: "There are a lot of ways to handle authentication with Facebook; this is just one of them. It's token-based (JWT) authentication for statelessly accessing protected endpoints. That means that logging in is a matter of getting a token to store in the browser, and then sending that with every API request. It uses Passport on the backend, and no special libraries on the front-end.",
+    links: [{
+    }],
+    annotatedExamples: null
 }];

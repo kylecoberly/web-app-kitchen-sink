@@ -1,0 +1,143 @@
+/* waks:start=HTML Form=start */
+This form displays the sign in button if the user is logged out, and top secret data and the option to logout if they're signed in.
+<!-- waks:example -->
+<template>
+<div class="social-auth">
+    <!-- If the user is logged out, give them the option to log in -->
+    <div class="logged-out">
+        <button class="login"><img src="../../assets/facebook-logo.png"/>Sign In</button>
+    </div>
+    <!-- If the user is logged in, give them the option to get secret data or log out -->
+    <div class="logged-in">
+        <button class="secret"><img src="../../assets/lock.png" alt="Lock" />Get secret data</button>
+        <button class="logout"><img src="../../assets/facebook-logo.png" />Sign out</button>
+        <p class="message"></p>
+    </div>
+</div>
+</template>
+<!-- waks:end -->
+
+<script>
+    export default {
+        mounted(){
+/* waks:start=Client-Side Code=start
+waks:example */
+const baseUrl = "https://web-app-kitchen-sink-api.herokuapp.com";
+
+// Get the elements we'll be working with
+const $login = document.querySelector(".login");
+const $logout = document.querySelector(".logout");
+const $loggedIn = document.querySelector(".logged-in");
+const $loggedOut = document.querySelector(".logged-out");
+const $secret = document.querySelector(".secret");
+const $message = document.querySelector(".message");
+
+// Initialize the login status
+updateLoginStatus();
+
+// When the user logs in, open a new page with either
+// the Facebook login prompt or the page from the server
+// that will send a JWT to this page to save
+$login.addEventListener("click", event => {
+    window.open(`${baseUrl}/apis/social-auth/login`);
+});
+
+// When the redirect from the server opens a window with our
+// token, this will catch the message from it and allow
+// the app to save the token in local storage.
+window.addEventListener("message", event => {
+    if (event.data.command === "setToken" && event.origin === baseUrl){
+        // localStorage will survive a page refresh
+        localStorage.setItem("token", event.data.token);
+        updateLoginStatus();
+    }
+});
+
+// When a user wants secret data, send a request to the secure endpoint
+// with the `Authorization` header and the user's stored JWT.
+$secret.addEventListener("click", event => {
+    fetch(`${baseUrl}/apis/social-auth/secure`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }).then(response => response.json())
+    .then(response => {
+        // If there's a message show it, otherwise show an error
+        $message.textContent = response.data
+            ? response.data
+            : "There was an error with your request";
+    }).catch(error => throw new Error(error));
+});
+
+// Since the server has no concept of us being logged in,
+// "logging out" just means deleting the stored token.
+$logout.addEventListener("click", event => {
+    localStorage.removeItem("token");
+    updateLoginStatus();
+});
+
+// Toggle display based on whether or not the token has
+// been set in local storage
+function updateLoginStatus(){
+    localStorage.getItem("token")
+        ? toggleDisplay($loggedIn, $loggedOut)
+        : toggleDisplay($loggedOut, $loggedIn);
+}
+function toggleDisplay($toShow, $toHide){
+    $toShow.style.display = "block";
+    $toHide.style.display = "none";
+}
+/* waks:end */
+        }
+    };
+</script>
+
+<style scoped lang="scss">
+@import "~@/styles/_colors";
+
+/* waks:start=Styles=start
+waks:example */
+.social-auth {
+    padding: 1rem;
+    .login, .logout {
+        padding: 1rem;
+        background-color: #3b5998;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        border: none;
+        border-radius: 4px;
+        transition: all 0.2s;
+        img {
+            width: 2rem;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+    .secret {
+        padding: 1rem;
+        background-color: $primary-color-medium;
+        color: $white;
+        display: inline-flex;
+        align-items: center;
+        border: none;
+        border-radius: 4px;
+        border: none;
+        transition: all 0.2s;
+        margin-right: 1rem;
+        &:hover {
+            background-color: lighten($primary-color-medium, 10%);
+            transform: scale(1.05);
+        }
+        img {
+            width: 2rem;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+    }
+}
+/* waks:end */
+</style>

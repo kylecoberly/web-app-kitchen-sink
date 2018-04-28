@@ -17,6 +17,11 @@
                             S3 File Uploads
                         </router-link>
                     </li>
+                    <li>
+                        <router-link :to="{name: 'apis', params: {component: 'social-auth'}}">
+                            Social Auth
+                        </router-link>
+                    </li>
                 </ul>
             </nav>
             <router-view/>
