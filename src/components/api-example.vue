@@ -33,6 +33,7 @@
 <script>
     import StripePayments from "@/components/apis/stripe-payments";
     import S3Uploads from "@/components/apis/s3-uploads";
+    import SocialAuth from "@/components/apis/social-auth";
     import AnnotatedExample from "@/components/annotated-example";
     import ApiDetails from "@/components/api-details";
     import {FingerprintSpinner} from "epic-spinners";
@@ -43,6 +44,7 @@
             ApiDetails,
             S3Uploads,
             StripePayments,
+            SocialAuth,
             FingerprintSpinner
         },
         props: {
