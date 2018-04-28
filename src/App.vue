@@ -30,6 +30,7 @@
             <ul>
                 <li><a href="https://github.com/kylecoberly/web-app-kitchen-sink" target="_BLANK">Client source code</a></li>
                 <li><a href="https://github.com/kylecoberly/web-app-kitchen-sink-api" target="_BLANK">Server source code</a></li>
+                <li><router-link :to="{name: 'privacy'}">Privacy policy</router-link></li>
             </ul>
             <p>&copy; <a href="https://kylecoberly.com" target="_BLANK">Kyle Coberly</a>, 2018 &mdash; MIT License</p>
         </footer>
