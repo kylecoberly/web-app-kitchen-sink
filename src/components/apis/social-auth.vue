@@ -112,12 +112,12 @@ waks:example */
     padding: 1rem;
     display: flex;
     align-items: center;
-    .login, .logout {
+    .login, .logout, .secret {
         padding: 1rem;
         background-color: #3b5998;
-        color: #fff;
+        color: $white;
         display: inline-flex;
-        align-items: center; // Vertically center FB logo
+        align-items: center; // Vertically center images
         border: none;
         border-radius: 4px;
         transition: all 0.2s;
@@ -131,24 +131,10 @@ waks:example */
         }
     }
     .secret {
-        padding: 1rem;
         background-color: $primary-color-medium;
-        color: $white;
-        display: inline-flex;
-        align-items: center; // Vertically center lock icon
-        border: none;
-        border-radius: 4px;
-        border: none;
-        transition: all 0.2s;
         margin-right: 1rem;
         &:hover {
             background-color: lighten($primary-color-medium, 10%);
-            transform: scale(1.05);
-        }
-        img {
-            width: 2rem;
-            display: inline-block;
-            margin-right: 1rem;
         }
     }
 }
