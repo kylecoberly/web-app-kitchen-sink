@@ -21,6 +21,16 @@ This form displays the sign in button if the user is logged out, and top secret 
     export default {
         mounted(){
 /* waks:start=Client-Side Code=start
+Most of the auth work is done by the server. The general flow of the app works like this:
+
+1. A user clicks on the login button and opens whatever page is sent back in a new tab
+    * If the user isn't logged into Facebook, the new page prompts them to sign in
+    * If the user is logged into Facebook, the new page takes the token your server created and sends it to this page
+2. When the token is sent back to this page, it's stored in `localStorage`
+3. Any time a request for secure data is made, the token is sent in the `Authorization` header
+4. When a user logs out, the token is removed from `localStorage`
+
+Note that we don't actually have access to the user's data in local storage- only the encrypted token. We could easily send this token to a `/users` endpoint that would return user data for our application to use.
 waks:example */
 const baseUrl = "https://web-app-kitchen-sink-api.herokuapp.com";
 
@@ -96,15 +106,18 @@ function toggleDisplay($toShow, $toHide){
 @import "~@/styles/_colors";
 
 /* waks:start=Styles=start
+The only thing worth noting in the styles is that the Facebook logo and the icon are inside of the button container, and the button itself is flexed to vertically center them.
 waks:example */
 .social-auth {
     padding: 1rem;
+    display: flex;
+    align-items: center;
     .login, .logout {
         padding: 1rem;
         background-color: #3b5998;
         color: #fff;
         display: inline-flex;
-        align-items: center;
+        align-items: center; // Vertically center FB logo
         border: none;
         border-radius: 4px;
         transition: all 0.2s;
@@ -122,7 +135,7 @@ waks:example */
         background-color: $primary-color-medium;
         color: $white;
         display: inline-flex;
-        align-items: center;
+        align-items: center; // Vertically center lock icon
         border: none;
         border-radius: 4px;
         border: none;
