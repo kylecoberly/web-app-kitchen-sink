@@ -34,6 +34,7 @@
     import StripePayments from "@/components/apis/stripe-payments";
     import S3Uploads from "@/components/apis/s3-uploads";
     import SocialAuth from "@/components/apis/social-auth";
+    import Camera from "@/components/apis/camera";
     import AnnotatedExample from "@/components/annotated-example";
     import ApiDetails from "@/components/api-details";
     import {FingerprintSpinner} from "epic-spinners";
@@ -45,6 +46,7 @@
             S3Uploads,
             StripePayments,
             SocialAuth,
+            Camera,
             FingerprintSpinner
         },
         props: {

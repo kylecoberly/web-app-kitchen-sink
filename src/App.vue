@@ -22,6 +22,11 @@
                             Social Auth
                         </router-link>
                     </li>
+                    <li>
+                        <router-link :to="{name: 'apis', params: {component: 'camera'}}">
+                            Cameras
+                        </router-link>
+                    </li>
                 </ul>
             </nav>
             <router-view/>

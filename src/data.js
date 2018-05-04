@@ -35,4 +35,11 @@ export default [{
     links: [{
     }],
     annotatedExamples: null
+},{
+    label: "camera",
+    heading: "Accessing cameras",
+    description: "Using cameras",
+    links: [{
+    }],
+    annotatedExamples: null
 }];
