@@ -35,4 +35,11 @@ export default [{
     links: [{
     }],
     annotatedExamples: null
+},{
+    label: "camera",
+    heading: "Accessing device cameras",
+    description: "Browsers now have access to device cameras and microphones, and can use them to take pictures or record videos. This example lists the attached cameras (you won't be able to see their names until you give permission because security), and when you select one you'll be able to monitor its output in a video player. You can use the controls in the player to take pictures (which will list below), or record videos (which will prompt for download). Note that the video recording may not work on some browsers, as it requires support for the MediaRecorder API. If that's the case, WebRTC has wider support, but requires a server to encode the stream into a video.",
+    links: [{
+    }],
+    annotatedExamples: null
 }];
