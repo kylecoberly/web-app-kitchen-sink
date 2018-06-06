@@ -64,7 +64,6 @@ document.querySelector("form").addEventListener("submit", event => {
 Basic form styling. The form uses a `file` upload type- note that these look different from browser to browser, and can be hard to style directly. You can use the `File` API for more fine-grained control.
 waks:example */
 .s3 {
-    padding: 1rem;
     form {
         max-width: 30rem;
         label {

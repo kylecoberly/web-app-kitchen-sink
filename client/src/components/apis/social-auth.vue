@@ -109,7 +109,6 @@ function toggleDisplay($toShow, $toHide){
 The only thing worth noting in the styles is that the Facebook logo and the icon are inside of the button container, and the button itself is flexed to vertically center them.
 waks:example */
 .social-auth {
-    padding: 1rem;
     display: flex;
     align-items: center;
     .login, .logout, .secret {

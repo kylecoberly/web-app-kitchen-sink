@@ -142,7 +142,6 @@ function displayMessage(message, isError){
 The style on the form is basic form styling. The only exception is the element that's created by Stripe, which has the `.StripeElement` class and a few helper classes as seen below.
 waks:example */
 .stripe {
-    padding: 1rem;
     form {
         max-width: 30rem;
         label {

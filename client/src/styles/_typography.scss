@@ -1,46 +1,59 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,400i");
 
+// Type scale:
+// 5, 7, 9, 12, 16, 21, 28, 37, 50, 67, 89, 119, 159
+
 @mixin primary-header-font {
     font-family: "Roboto Mono", monospace;
-    font-size: 1.5rem;
+    font-size: 21;
+    word-spacing: -3px;
+    letter-spacing: -1px;
 }
 
 @mixin secondary-header-font {
     font-family: "Roboto", serif;
-    font-size: 2.8rem;
+    font-size: 37px;
+    line-height: 37px;
     font-weight: 400;
     margin-bottom: 1.5rem;
 }
 
 @mixin tertiary-header-font {
     font-family: "Roboto", serif;
-    font-size: 2.0rem;
+    font-size: 28px;
+    line-height: 37px;
     font-weight: 400;
     margin-bottom: 1.5rem;
 }
 
+@mixin navigation-header-font {
+    font-family: "Roboto", serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 @mixin navigation-link-font {
     font-family: "Roboto", serif;
-    font-size: 1.0rem;
+    font-size: 12px;
     font-weight: 400;
     text-decoration: underline;
 }
 
 @mixin code-font {
     font-family: "Roboto Mono", monospace;
-    font-size: 1.1rem;
-    line-height: 1.8rem;
+    font-size: 16px;
+    line-height: 28px;
 }
 
 @mixin body-font {
     font-family: "Roboto", serif;
-    font-size: 1.5rem;
+    font-size: 16px;
     font-weight: 300;
-    line-height: 2.2rem;
+    line-height: 28px;
 }
 
 @mixin aside-font {
     font-family: "Roboto", serif;
     font-style: italic;
-    font-size: 1rem;
+    font-size: 12px;
 }

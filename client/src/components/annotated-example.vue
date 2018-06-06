@@ -34,25 +34,31 @@
 <style lang="scss">
     @import "~@/styles/_colors";
     @import "~@/styles/_typography";
-    $medium-breakpoint: 800px;
-    $column-width: 42rem;
+    @import "~@/styles/_breakpoints";
 
     .annotated-example {
         padding: 2rem 0rem;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        section {
-            flex: 0.7;
-            padding-right: 3rem;
-            @media (max-width: $medium-breakpoint) {
-                flex: initial;
+        display: grid;
+        grid-template: auto / 30% 1fr;
+        grid-template-areas:
+            "annotation code";
+        @media (max-width: $large-screen){
+            grid-template: auto 1fr / 1fr;
+            grid-template-areas:
+                "annotation"
+                "code";
             }
+        section {
+            grid-template-area: annotation;
+            padding-right: 3rem;
             h3 {
                 @include tertiary-header-font;
             }
             .annotation {
                 @include body-font;
+                p, li {
+                    max-width: 40em;
+                }
                 ul {
                     list-style: circle;
                     margin-left: 2rem;
@@ -64,7 +70,6 @@
                     margin-bottom: 2rem;
                 }
                 li {
-                    margin-bottom: 0.5rem;
                 }
                 code {
                     @include code-font;
@@ -72,11 +77,7 @@
             }
         }
         pre {
-            flex: 1.3;
-            max-width: 50rem;
-            @media (max-width: $medium-breakpoint) {
-                flex: initial;
-            }
+            grid-template-area: code;
         }
     }
 </style>

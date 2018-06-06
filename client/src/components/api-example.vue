@@ -1,15 +1,16 @@
 <template>
     <section class="api-example">
-        <header>
+        <h2>{{api.heading}}</h2>
+        <div class="demo">
+            <div class="api-integration">
+                <component :is="component"></component>
+            </div>
             <api-details
                  :heading="api.heading"
                  :links="api.links"
                  :description="api.description"
             ></api-details>
-            <div class="api-integration">
-                <component :is="component"></component>
-            </div>
-        </header>
+        </div>
         <div v-if="loading" class="loading-spinner">
             <fingerprint-spinner
                 :animation-duration="2000"
@@ -18,7 +19,7 @@
             />
         </div>
         <p v-else-if="networkError">Error: {{networkError}}</p>
-        <ul v-else>
+        <ul class="annotated-examples" v-else>
             <li v-for="annotatedExample in api.annotatedExamples">
                 <annotated-example
                     :heading="annotatedExample.heading"
@@ -60,35 +61,41 @@
 
 <style scoped lang="scss">
     @import "~@/styles/_typography";
-
-    $medium-breakpoint: 800px;
-    $column-width: 42rem;
+    @import "~@/styles/_breakpoints";
 
     .api-example {
-        padding: 2rem;
+        padding: 0 1rem;
         flex-grow: 1;
         flex-basis: 0;
         overflow-x: auto;
-        > header {
-            display: flex;
-            flex-flow: row wrap;
+        h2 {
+            @include secondary-header-font;
+        }
+        > .demo {
+            display: grid;
+            grid-template: auto / 1fr 30%;
+            grid-template-areas:
+                "demo details";
+            @media (max-width: $large-screen){
+                grid-template: 1fr auto / auto;
+                grid-template-areas:
+                    "demo"
+                    "details";
+            }
             .api-details {
-                order: 2;
-                flex: 0.7;
-                width: 100%;
-                @media (max-width: $medium-breakpoint) {
-                    flex: initial;
+                @media (max-width: $large-screen){
+                    margin-top: 1rem;
                 }
+                width: 100%;
             }
             .api-integration {
-                order: 1;
-                flex: 1.3;
+                grid-template-area: demo;
                 display: flex;
                 justify-content: center;
-                @media (max-width: $medium-breakpoint){
-                    order: 3;
-                }
             }
+        }
+        .annotated-examples {
+            grid-template-area: annotations;
         }
         .loading-spinner {
             padding: 2rem;

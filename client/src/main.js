@@ -6,6 +6,11 @@ import "./registerServiceWorker";
 
 Vue.config.productionTip = false;
 
+router.beforeEach(function (to, from, next) {
+    window.scrollTo(0, 0)
+    next();
+})
+
 new Vue({
     router,
     store,

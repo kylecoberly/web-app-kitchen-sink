@@ -308,7 +308,6 @@ The most interesting thing to note in the styles is the recording animation. Whe
 @import "~@/styles/_colors";
 
 .camera-demo {
-    padding: 1rem;
     width: 100%;
     .cameras {
         background-color: $light-grey;

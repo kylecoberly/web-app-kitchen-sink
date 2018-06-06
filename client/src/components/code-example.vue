@@ -20,7 +20,6 @@
     @import "../../node_modules/highlight.js/styles/dracula.css";
 
     pre {
-        max-width: 60rem;
         overflow-x: auto;
         code {
             @include code-font;
