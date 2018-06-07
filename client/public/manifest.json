@@ -1,6 +1,6 @@
 {
     "name": "Web App Kitchen Sink",
-    "short_name": "Kitchen Sink",
+    "short_name": "Web App Kitchen Sink",
     "icons": [
         {
             "src": "/img/icons/favicon-16x16.png",
@@ -25,6 +25,6 @@
     ],
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#551057",
-    "theme_color": "#A872AA"
+    "background_color": "#fafafa",
+    "theme_color": "#551057"
 }
