@@ -1,4 +1,4 @@
-/* waks:start=HTML Form=start */
+/* waks:start-annotation=HTML Form
 This is the HTML for a Stripe Elements form. Some things to note:
 
 * The `#card-element` div will end up having the actual credit card entry field inserted into it by the Stripe.js library.
@@ -7,8 +7,9 @@ This is the HTML for a Stripe Elements form. Some things to note:
     * Real-time error from not entering a valid credit card
     * Error message from your server
     * Success message from your server
-<!-- waks:example -->
+waks:end-annotation */
 <template>
+<!-- waks:start-example -->
 <div class="stripe">
     <form>
         <label for="name">Name</label>
@@ -30,13 +31,13 @@ This is the HTML for a Stripe Elements form. Some things to note:
         <input type="submit" value="Submit Payment" />
     </form>
 </div>
+<!-- waks:end-example -->
 </template>
-<!-- waks:end -->
 
 <script>
     export default {
         mounted(){
-/* waks:start=Client-Side Code=start
+/* waks:start-annotation=Client-Side Code
 The key things you need with your client-side code are:
 
 1. Create and insert Stripe's credit card input field
@@ -50,7 +51,8 @@ Stripe's credit card input form is not a normal input field. It does lots of fra
 To get your client-side key, create a Stripe account and get it from the Stripe dashboard in the developer section. Note that there are 2 sets of keys (production and test), and 2 keys in each of them (client and server). Your client key can be published, your server should not be. Use the test keys in development and testing to prevent making any actual charges.
 
 One important gotcha: the token that gets created has a lot of data on it. **The only thing you should send to the server is the `id` from it.**
-waks:example */
+/* waks:end-annotation */
+/* waks:start-example */
 // DOM elements we'll use
 const $cardElement = document.querySelector("#card-element");
 const $paymentForm = document.querySelector("form");
@@ -130,7 +132,7 @@ function displayMessage(message, isError){
         ? $errors.textContent = message
         : $message.textContent = message;
 }
-/* waks:end */
+/* waks:end-example */
         }
     };
 </script>
@@ -138,9 +140,10 @@ function displayMessage(message, isError){
 <style scoped lang="scss">
 @import "~@/styles/_colors";
 
-/* waks:start=Styles=start
+/* waks:start-annotation=Styles
 The style on the form is basic form styling. The only exception is the element that's created by Stripe, which has the `.StripeElement` class and a few helper classes as seen below.
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 .stripe {
     form {
         max-width: 30rem;
@@ -202,5 +205,5 @@ waks:example */
         }
     }
 }
-/* waks:end */
+/* waks:end-example */
 </style>

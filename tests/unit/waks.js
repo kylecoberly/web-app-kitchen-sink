@@ -5,11 +5,12 @@ describe("WAKS", () => {
     it("decodes a WAKS-markup file", () => {
         const encodedString = `
 // Ignore this
-/* waks:start=This is a Heading=start
+/* waks:start-annotation=This is a Heading
 Annotation
-waks:example */
+/* waks:end-annotation */
+/* waks:start-example */
 const a = 'a';
-/* waks:end */
+/* waks:end-example */
 // Ignore this too
         `;
         assert.deepEqual(decode(encodedString), [{
@@ -21,17 +22,19 @@ const a = 'a';
     it("decodes a WAKS-markup file with multiple annotations", () => {
         const encodedString = `
 // Ignore this
-/* waks:start=This is a Heading=start
+/* waks:start-annotation=This is a Heading
 Annotation1
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 const a = 'a';
-/* waks:end */
+/* waks:end-example */
 // Ignore this too
-/* waks:start=This is a Heading=start
+/* waks:start-annotation=This is a Heading
 Annotation2
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 const b = 'b';
-/* waks:end */
+/* waks:end-example */
 // Ignore this as well
         `;
         assert.deepEqual(decode(encodedString), [{

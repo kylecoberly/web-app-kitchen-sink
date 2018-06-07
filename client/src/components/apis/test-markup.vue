@@ -1,17 +1,19 @@
 // Ignore this
-/* waks:start=Heading=start
+/* waks:start-annotation=Heading
 a
 b
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 d
 e
-/* waks:end */
+/* waks:end-example */
 // Ignore this too
-/* waks:start=Heading=start
+/* waks:start-annotation=Heading
 f
 g
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 h
 i
-/* waks:end */
+/* waks:end-example */
 // Ignore this as well

@@ -1,7 +1,8 @@
-/* waks:start=HTML Form=start */
+/* waks:start-annotation=HTML Form
 Two things to note on this: make sure to use `enctype="multipart/form-data"` on the form element, and set the input type to "file."
-<!-- waks:example -->
+waks:end-annotation */
 <template>
+<!-- waks:start-example -->
 <div class="s3">
     <!-- Important! Your server can only process files with this enctype -->
     <form enctype="multipart/form-data">
@@ -13,15 +14,16 @@ Two things to note on this: make sure to use `enctype="multipart/form-data"` on 
         <div id="message"></div>
     </form>
 </div>
+<!-- waks:end-example -->
 </template>
-<!-- waks:end -->
 
 <script>
     export default {
         mounted(){
-/* waks:start=Client-Side Code=start
+/* waks:start-annotation=Client-Side Code
 When the upload form submits, you intercept and interrupt the request. Make a `POST` request to your server, and then display the success message or error when it comes back. Note that you *must* send the message as `multipart/form-data`, or the server won't process it!
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 // Store the message element
 const $message = document.querySelector("#message");
 
@@ -52,7 +54,7 @@ document.querySelector("form").addEventListener("submit", event => {
         `;
     });
 });
-/* waks:end */
+/* waks:end-example */
         }
     };
 </script>
@@ -60,9 +62,10 @@ document.querySelector("form").addEventListener("submit", event => {
 <style scoped lang="scss">
 @import "~@/styles/_colors";
 
-/* waks:start=Styles=start
+/* waks:start-annotation=Styles
 Basic form styling. The form uses a `file` upload type- note that these look different from browser to browser, and can be hard to style directly. You can use the `File` API for more fine-grained control.
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 .s3 {
     form {
         max-width: 30rem;
@@ -91,5 +94,5 @@ waks:example */
         }
     }
 }
-/* waks:end */
+/* waks:end-example */
 </style>

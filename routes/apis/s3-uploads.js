@@ -1,4 +1,4 @@
-/* waks:start=File Upload Server=start
+/* waks:start-annotation=File Upload Server
 Before you start, you need to setup your bucket on S3.
 
 1. Go to the IAM service on AWS, then go to "Users", then "Add User."
@@ -17,7 +17,8 @@ Before you start, you need to setup your bucket on S3.
 NOTE: If you do this, only your server can write files to the bucket, but anyone can read them. Both reading and writing can cost you money on AWS, and all uploaded files are available to anyone.
 
 Once you've set up your bucket, add a route to process the file upload. This route will process the file upload as middleware, and add details about the added S3 object to the `request` object.
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 const express = require("express");
 const router = express.Router();
 
@@ -61,4 +62,4 @@ router.post("/upload", upload.single("file"), (request, response) => {
 });
 
 module.exports = router;
-/* waks:end */
+/* waks:end-example */

@@ -14,48 +14,26 @@ describe("Github Service", () => {
             done();
         }).catch(done);
     });
-    it("Retrieves backend examples", done => {
-        github.getBackendExamples("test-markup").then(contents => {
-            assert.equal(contents, `\/\/ Ignore this
-\/* waks:start=Heading=start
-a
-b
-waks:example *\/
-d
-e
-\/* waks:end *\/
-\/\/ Ignore this too
-\/* waks:start=Heading=start
-f
-g
-waks:example *\/
-h
-i
-\/* waks:end *\/
-\/\/ Ignore this as well
-`
-            );
-            done();
-        }).catch(done);
-    });
     it("Retrieves frontend examples", done => {
         github.getFrontendExamples("test-markup").then(contents => {
             assert.equal(contents, `\/\/ Ignore this
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 a
 b
-waks:example *\/
+waks:end-annotation \*/
+\/* waks:start-example *\/
 d
 e
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this too
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 f
 g
-waks:example *\/
+waks:end-annotation *\/
+\/* waks:start-example *\/
 h
 i
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this as well
 `
             );
@@ -65,38 +43,42 @@ i
     it("Retrieves all examples", done => {
         github.getAllExamples("test-markup").then(contents => {
             assert.equal(contents, `\/\/ Ignore this
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 a
 b
-waks:example *\/
+waks:end-annotation *\/
+\/* waks:start-example *\/
 d
 e
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this too
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 f
 g
-waks:example *\/
+waks:end-annotation *\/
+\/* waks:start-example *\/
 h
 i
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this as well
 \/\/ Ignore this
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 a
 b
-waks:example *\/
+waks:end-annotation *\/
+\/* waks:start-example *\/
 d
 e
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this too
-\/* waks:start=Heading=start
+\/* waks:start-annotation=Heading
 f
 g
-waks:example *\/
+waks:end-annotation *\/
+\/* waks:start-example *\/
 h
 i
-\/* waks:end *\/
+\/* waks:end-example *\/
 \/\/ Ignore this as well
 `
             );

@@ -1,30 +1,32 @@
-/* waks:start=HTML=start */
+/* waks:start-annotation=HTML
 There's not much to the HTML; we'll need a place to list our cameras, show their streams, list any snapshots we take, and display any error messages.
-<!-- waks:example -->
+waks:end-annotation */
 <template>
-    <div class="camera-demo">
-        <div class="cameras">
-            <h3>Available Cameras</h3>
-            <ul></ul>
-        </div>
-        <ul class="video-previews"></ul>
-        <ul class="snapshots"></ul>
-        <p class="message"></p>
+<!-- waks:start-example -->
+<div class="camera-demo">
+    <div class="cameras">
+        <h3>Available Cameras</h3>
+        <ul></ul>
     </div>
+    <ul class="video-previews"></ul>
+    <ul class="snapshots"></ul>
+    <p class="message"></p>
+</div>
+<!-- waks:end-example -->
 </template>
-<!-- waks:end -->
 
 <script>
 export default {
     mounted(){
-/* waks:start=Setup=start
+/* waks:start-annotation=Setup
 After grabbing a couple of DOM elments, we'll initialize the page. The initialization does the following:
 
 1. Check to see if their browser supports accessing media devices
 2. Gets a list of the available media devices from the browser
 3. Narrows that down to a list of cameras
 4. Displays a list of buttons to the user that allows them to activate a camera
-/* waks:example */
+waks:end-annotation */
+/* waks:start-example */
 // The elements we'll use
 const $cameras = document.querySelector(".cameras ul");
 const $videoPreviews = document.querySelector(".video-previews");
@@ -83,9 +85,9 @@ function showCameraList(devices){
         return $li;
     }
 }
-/* waks:end */
+/* waks:end-example */
 
-/* waks:start=Video Recording=start
+/* waks:start-annotation=Video Recording
 This section:
 
 1. Takes the ID of a user-selected camera
@@ -94,7 +96,8 @@ This section:
 4. Appends the element to the page
 
 Additionally, we setup the functions for recording a media stream and encoding it into a video.
-/* waks:example */
+waks:end-annotation */
+/* waks:start-example */
 function showVideo(id){
     // Given the ID of the camera the user selected, this requests
     // permission for this specific camera. There are a lot of
@@ -156,11 +159,12 @@ function appendVideo($videoContainer){
     $li.appendChild(createVideoRecorder($videoContainer));
     $videoPreviews.appendChild($videoContainer);
 }
-/* waks:end */
+/* waks:end-example */
 
-/* waks:start=Media Controls=start
+/* waks:start-annotation=Media Controls
 This sets up the user controls for recording videos and taking pictures.
-/* waks:example */
+waks:end-annotation */
+/* waks:start-example */
 function createVideoRecorder($videoContainer){
     const $video = $videoContainer.querySelector("video");
     // MediaRecorder is a new API - it doesn't work in some
@@ -237,11 +241,12 @@ function buildSnapshotButton($video){
     $snap.addEventListener("click", takeSnapshot.bind(null, $video));
     return $snap;
 }
-/* waks:end */
+/* waks:end-example */
 
-/* waks:start=Taking a Snapshot=start
+/* waks:start-annotation=Taking a Snapshot
 To take a picture, you need a video element. From that you write the current state of the video screen to a canvas, and then turn the canvas into a `.png` data URL.
-/* waks:example */
+waks:end-annotation */
+/* waks:start-example */
 function takeSnapshot($video){
     const $canvas = getCanvasFromVideo($video);
     const $img = getImageFromCanvas($canvas);
@@ -295,16 +300,17 @@ function downloadVideo(video){
         return $a;
     }
 }
-/* waks:end */
+/* waks:end-example */
     }
 };
 
 </script>
 
 <style lang="scss">
-/* waks:start=Styles=start
+/* waks:start-annotation=Styles
 The most interesting thing to note in the styles is the recording animation. When the video is recording, it pulses the background color.
-/* waks:example */
+waks:end-annotation */
+/* waks:start-example */
 @import "~@/styles/_colors";
 
 .camera-demo {
@@ -388,5 +394,5 @@ The most interesting thing to note in the styles is the recording animation. Whe
         }
     }
 }
-/* waks:end */
+/* waks:end-example */
 </style>

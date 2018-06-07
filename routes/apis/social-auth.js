@@ -1,4 +1,4 @@
-/* waks:start=Configuring a Facebook auth server=start
+/* waks:start-annotation=Configuring a Facebook auth server
 First, you need to register your application with Facebook.
 
 1. Go to https://developers.facebook.com/apps, and click "Register Now" to become a Facebook developer
@@ -13,7 +13,8 @@ There are two major things to configure on the server:
 
 1. The Facebook strategy, which will get a user's Facebook credentials so we can encode them into a JWT
 2. The JWT strategy, which will decode the JWT they send and make sure they're allowed to access the data they're requesting.
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
@@ -70,11 +71,12 @@ passport.use(jwtStrategy);
 
 // Tell the server that passport is configured and ready to go
 router.use(passport.initialize());
-/* waks:end */
+/* waks:end-example */
 
-/* waks:start=Logging in=start
+/* waks:start-annotation=Logging in
 "Logging in" to a stateless service like this just means generating a token and sending it to the client to send on future API calls. `/login` will send the user to Facebook to log in, then it will redirect them to our `/redirect` endpoint with their Facebook data. `/redirect` generates another web page that encodes that data into a JWT to send back to the original app that called `/login`.
-waks:example */
+waks:end-annotation */
+/* waks:start-example */
 // Hitting this endpoint checks whether the user is logged into Facebook,
 // prompting them to log in if they are not
 router.get("/login", passport.authenticate("facebook", {session: false}));
@@ -132,11 +134,12 @@ function generateToken(user){
         expiresIn: 60 * 60 * 1000
     });
 }
-/* waks:end */
+/* waks:end-example */
 
-/* waks:start=Protecting an API endpoint=start
+/* waks:start-annotation=Protecting an API endpoint
 If the user doesn't send a valid JWT to this endpoint, it redirects to the login. Otherwise, it sends us some top-secret information.
-waks:example */
+/* waks:end-annotation */
+/* waks:start-example */
 router.get("/secure",
     passport.authenticate("jwt", {
         session: false,
@@ -148,6 +151,6 @@ router.get("/secure",
         response.json({data: `Got a secure response from ${request.user.name}`});
     }
 );
-/* waks:end */
+/* waks:end-example */
 
 module.exports = router;

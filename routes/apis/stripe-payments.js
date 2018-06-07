@@ -1,6 +1,8 @@
-/* waks:start=Payment Processing Server=start
+/* waks:start-annotation=Payment Processing Server
 This is an example route in Express for handling a Stripe payment. The request is `POST`ed to `/apis/stripe-payment`, and then processed.
-waks:example */
+waks:end-annotation */
+/* waks:end-annotation */
+/* waks:start-example */
 const express = require("express");
 const router = express.Router();
 
@@ -26,6 +28,6 @@ router.post("/", (request, response) => {
             : response.json({data: charge});
     });
 });
-/* waks:end */
+/* waks:end-example */
 
 module.exports = router;
