@@ -13,14 +13,6 @@
 
     export default {
         components: {"apiExample": ApiExample},
-        beforeRouteEnter: (to, from, next) => {
-            Store.dispatch("closeNavigation");
-            next();
-        },
-        beforeRouteUpdate: (to, from, next) => {
-            Store.dispatch("closeNavigation");
-            next();
-        },
         watch: {
             "$route": "setCurrentAPI"
         },
@@ -47,7 +39,7 @@
                         this.loading = false;
                     }).catch(error => {
                         this.loading = false;
-                        console.log(error);
+                        console.error(error);
                         this.networkError = error.message;
                     });
             }
