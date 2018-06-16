@@ -3,7 +3,7 @@
         <h2>{{api.heading}}</h2>
         <div class="demo">
             <div class="api-integration">
-                <component :is="component"></component>
+                <component :is="api.label"></component>
             </div>
             <api-details
                  :heading="api.heading"
@@ -51,7 +51,6 @@
             FingerprintSpinner
         },
         props: {
-            component: String,
             api: Object,
             loading: Boolean,
             networkError: String

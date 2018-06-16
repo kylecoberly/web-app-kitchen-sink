@@ -7,22 +7,22 @@
             <h2>API Integrations</h2>
             <ul>
                 <li>
-                    <router-link :to="{name: 'apis', params: {component: 'stripe-payments'}}">
+                    <router-link :to="{name: 'example', params: {component: 'stripe-payments'}}">
                         Stripe Payments
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'apis', params: {component: 's3-uploads'}}">
+                    <router-link :to="{name: 'example', params: {component: 's3-uploads'}}">
                         S3 File Uploads
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'apis', params: {component: 'social-auth'}}">
+                    <router-link :to="{name: 'example', params: {component: 'social-auth'}}">
                         Social Auth
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name: 'apis', params: {component: 'camera'}}">
+                    <router-link :to="{name: 'example', params: {component: 'camera'}}">
                         Cameras
                     </router-link>
                 </li>
@@ -40,11 +40,6 @@
         </footer>
     </div>
 </template>
-
-<script>
-    export default {
-    };
-</script>
 
 <style lang="scss">
     @import "~@/styles/_resets";

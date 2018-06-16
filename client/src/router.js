@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Index from "@/views/index";
-import Api from "@/views/api";
+import Example from "@/views/example";
 import PrivacyPolicy from "@/views/privacy";
 
 Vue.use(Router);
@@ -13,8 +13,8 @@ export default new Router({
         component: Index
     },{
         path: "/apis/:component",
-        name: "apis",
-        component: Api
+        name: "example",
+        component: Example
     },{
         path: "/privacy",
         name: "privacy",

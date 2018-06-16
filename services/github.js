@@ -13,20 +13,41 @@ function getFile(owner, repo, path){
         .catch(error => "");
 }
 
-function getBackendExamples(route){
-    return getFile(
-        process.env.GITHUB_USERNAME,
-        process.env.GITHUB_REPO,
-        `routes/apis/${route}.js`
-    );
+async function getBackendExamples(route){
+    try {
+        const apiFile = await getFile(
+            process.env.GITHUB_USERNAME,
+            process.env.GITHUB_REPO,
+            `routes/apis/${route}.js`
+        );
+        const patternFile = await getFile(
+            process.env.GITHUB_USERNAME,
+            process.env.GITHUB_REPO,
+            `routes/patterns/${route}.js`
+        );
+
+        return apiFile.concat(patternFile);
+    } catch(error){
+        console.error(error.message);
+    }
 }
 
-function getFrontendExamples(component){
-    return getFile(
-        process.env.GITHUB_USERNAME,
-        process.env.GITHUB_REPO,
-        `client/src/components/apis/${component}.vue`
-    );
+async function getFrontendExamples(component){
+    try {
+        const apiFile = await getFile(
+            process.env.GITHUB_USERNAME,
+            process.env.GITHUB_REPO,
+            `client/src/components/apis/${component}.vue`
+        );
+        const patternFile = await getFile(
+            process.env.GITHUB_USERNAME,
+            process.env.GITHUB_REPO,
+            `client/src/components/patterns/${component}.vue`
+        );
+        return apiFile.concat(patternFile);
+    } catch(error){
+        console.error(error.message);
+    }
 }
 
 function getAllExamples(label){

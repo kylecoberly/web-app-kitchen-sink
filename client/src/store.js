@@ -4,39 +4,39 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const API_URL = "https://web-app-kitchen-sink-api.herokuapp.com";
-import apis from "./data";
+import examples from "./data";
 
 export default new Vuex.Store({
     state: {
-        currentAPI: {},
-        apis
+        currentExample: {},
+        examples
     },
     mutations: {
         updateAnnotatedExamples(state, data){
-            const api = findByLabel(state.apis, data.label);
-            api.annotatedExamples = data.annotatedExamples;
+            const example = findByLabel(state.examples, data.label);
+            example.annotatedExamples = data.annotatedExamples;
         },
-        setCurrentAPI(state, api){
-            state.currentAPI = api;
+        setCurrentExample(state, example){
+            state.currentExample = example;
         },
-        clearCurrentAPI(state){
-            state.currentAPI = null;
+        clearCurrentExample(state){
+            state.currentExample = null;
         }
     },
     actions: {
-        async setCurrentAPI(store, label){
-            const api = findByLabel(store.state.apis, label);
-            store.commit("setCurrentAPI", api);
+        async setCurrentExample(store, label){
+            const example = findByLabel(store.state.examples, label);
+            store.commit("setCurrentExample", example);
 
-            if (!api.annotatedExamples){
+            if (!example.annotatedExamples){
                 const {data} = await getAPIData(label);
                 store.commit("updateAnnotatedExamples", data);
             }
 
-            await store.commit("setCurrentAPI", api);
+            await store.commit("setCurrentExample", example);
         },
-        clearCurrentAPI(store){
-            store.commit("clearCurrentAPI");
+        clearCurrentExample(store){
+            store.commit("clearCurrentExample");
         }
     }
 });
