@@ -13,10 +13,6 @@
     import Store from "@/store";
 
     export default {
-        beforeRouteEnter: (to, from, next) => {
-            Store.dispatch("openNavigation");
-            next();
-        }
     };
 </script>
 

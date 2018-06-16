@@ -8,9 +8,8 @@ import apis from "./data";
 
 export default new Vuex.Store({
     state: {
-        isNavigationOpen: true,
         currentAPI: {},
-        apis,
+        apis
     },
     mutations: {
         updateAnnotatedExamples(state, data){
@@ -22,15 +21,6 @@ export default new Vuex.Store({
         },
         clearCurrentAPI(state){
             state.currentAPI = null;
-        },
-        toggleNavigation(state){
-            state.isNavigationOpen = state.isNavigationOpen ? false : true;
-        },
-        openNavigation(state){
-            state.isNavigationOpen = true;
-        },
-        closeNavigation(state){
-            state.isNavigationOpen = false;
         }
     },
     actions: {
@@ -49,15 +39,6 @@ export default new Vuex.Store({
         },
         clearCurrentAPI(store){
             store.commit("clearCurrentAPI");
-        },
-        toggleNavigation(store){
-            store.commit("toggleNavigation");
-        },
-        openNavigation(store){
-            store.commit("openNavigation");
-        },
-        closeNavigation(store){
-            store.commit("closeNavigation");
         }
     }
 });
