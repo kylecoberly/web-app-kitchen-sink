@@ -24,18 +24,16 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        setCurrentAPI(store, label){
+        async setCurrentAPI(store, label){
             const api = findByLabel(store.state.apis, label);
             store.commit("setCurrentAPI", api);
-            return Promise.resolve().then(() => {
-                if (!api.annotatedExamples){
-                    return getAPIData(label).then(({data}) => {
-                        store.commit("updateAnnotatedExamples", data);
-                    });
-                }
-            }).then(() => {
-                store.commit("setCurrentAPI", api);
-            });
+
+            if (!api.annotatedExamples){
+                const {data} = await getAPIData(label);
+                store.commit("updateAnnotatedExamples", data);
+            }
+
+            await store.commit("setCurrentAPI", api);
         },
         clearCurrentAPI(store){
             store.commit("clearCurrentAPI");
