@@ -34,6 +34,8 @@
 
 <script>
     import SingleResponsibilityPrinciple from "@/components/patterns/single-responsibility-principle";
+    import FactoryMethod from "@/components/patterns/factory-method";
+
     import AnnotatedExample from "@/components/annotated-example";
     import ApiDetails from "@/components/api-details";
     import {FingerprintSpinner} from "epic-spinners";
@@ -41,6 +43,7 @@
     export default {
         components: {
             SingleResponsibilityPrinciple,
+            FactoryMethod,
             AnnotatedExample,
             ApiDetails,
             FingerprintSpinner

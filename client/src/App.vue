@@ -34,6 +34,11 @@
                         Single Responsibility Principle
                     </router-link>
                 </li>
+                <li>
+                    <router-link :to="{name: 'pattern', params: {component: 'factory-method'}}">
+                        Factory Method
+                    </router-link>
+                </li>
             </ul>
         </nav>
         <main>

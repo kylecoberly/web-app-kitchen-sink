@@ -64,4 +64,18 @@ export default [{
         url: "https://hackernoon.com/you-dont-understand-the-single-responsibility-principle-abfdd005b137"
     }],
     annotatedExamples: null
+},{
+    label: "factory-method",
+    type: "pattern-example",
+    heading: "Factory Method",
+    description: "A factory method is a pattern in OOP that gives you an instance of a class with a particular interface without needing to know exactly which class it is. For example, if your app needs a database connection, it probably doesn't care whether it's a MySQL or PostgreSQL connection, even though those have different implementations. You can use a factory to separate those details from your app.",
+    problem: "Masking complexity or insulating from future change",
+    links: [{
+        label: "Wikipedia: Factory Pattern Methods",
+        url: "https://en.wikipedia.org/wiki/Factory_method_pattern"
+    },{
+        label: "Factories vs. Factory Methods vs. Abstract Factories",
+        url: "https://en.wikipedia.org/wiki/Factory_method_pattern"
+    }],
+    annotatedExamples: null
 }];
