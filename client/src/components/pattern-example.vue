@@ -1,7 +1,7 @@
 <template>
     <section class="pattern-example">
         <h2>{{api.heading}}</h2>
-        <p>Problem: {{api.problem}}</p>
+        <p>Use for: {{api.problem}}</p>
         <div class="explanation">
             <div class="pattern-integration">
                 <component :is="api.label"></component>
