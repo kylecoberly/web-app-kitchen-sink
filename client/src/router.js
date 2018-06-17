@@ -13,7 +13,11 @@ export default new Router({
         component: Index
     },{
         path: "/apis/:component",
-        name: "example",
+        name: "api",
+        component: Example
+    },{
+        path: "/patterns/:component",
+        name: "pattern",
         component: Example
     },{
         path: "/privacy",

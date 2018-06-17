@@ -23,7 +23,7 @@
         overflow-x: auto;
         code {
             @include code-font;
-            padding: 1rem 3rem;
+            padding: 21px;
         }
     }
 </style>

@@ -1,8 +1,9 @@
 <template>
-    <section class="api-example">
+    <section class="pattern-example">
         <h2>{{api.heading}}</h2>
-        <div class="demo">
-            <div class="api-integration">
+        <p>Problem: {{api.problem}}</p>
+        <div class="explanation">
+            <div class="pattern-integration">
                 <component :is="api.label"></component>
             </div>
             <api-details
@@ -32,22 +33,16 @@
 </template>
 
 <script>
-    import StripePayments from "@/components/apis/stripe-payments";
-    import S3Uploads from "@/components/apis/s3-uploads";
-    import SocialAuth from "@/components/apis/social-auth";
-    import Camera from "@/components/apis/camera";
+    import SingleResponsibilityPrinciple from "@/components/patterns/single-responsibility-principle";
     import AnnotatedExample from "@/components/annotated-example";
     import ApiDetails from "@/components/api-details";
     import {FingerprintSpinner} from "epic-spinners";
 
     export default {
         components: {
+            SingleResponsibilityPrinciple,
             AnnotatedExample,
             ApiDetails,
-            S3Uploads,
-            StripePayments,
-            SocialAuth,
-            Camera,
             FingerprintSpinner
         },
         props: {
@@ -62,7 +57,7 @@
     @import "~@/styles/_typography";
     @import "~@/styles/_breakpoints";
 
-    .api-example {
+    .pattern-example {
         padding: 0 1rem;
         flex-grow: 1;
         flex-basis: 0;
@@ -70,22 +65,12 @@
         h2 {
             @include secondary-header-font;
         }
-        > .demo {
-            display: grid;
-            grid-template: auto / 1fr 39%;
-            grid-template-areas:
-                "demo details";
-            @media (max-width: $large-screen){
-                grid-template: 1fr auto / auto;
-                grid-template-areas:
-                    "demo"
-                    "details";
-            }
+        > .explanation {
             .api-details {
+                max-width: 40rem;
                 @media (max-width: $large-screen){
                     margin-top: 1rem;
                 }
-                width: 100%;
             }
             .api-integration {
                 grid-template-area: demo;

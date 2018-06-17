@@ -23,7 +23,7 @@
 
     .api-details {
         background-color: lighten($primary-color-light, 45%);
-        padding: 1rem;
+        padding: 21px;
         p {
             max-width: 40rem;
         }

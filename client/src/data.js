@@ -36,6 +36,8 @@ export default [{
     heading: "Logging in with Facebook",
     description: "There are a lot of ways to handle authentication with Facebook; this is just one of them. It's token-based (JWT) authentication for statelessly accessing protected endpoints. That means that logging in is a matter of getting a token to store in the browser, and then sending that with every API request. It uses Passport on the backend, and no special libraries on the front-end.",
     links: [{
+        label: "Passport.js",
+        url: "http://www.passportjs.org/"
     }],
     annotatedExamples: null
 },{
@@ -44,6 +46,22 @@ export default [{
     heading: "Accessing device cameras",
     description: "Browsers now have access to device cameras and microphones, and can use them to take pictures or record videos. This example lists the attached cameras (you won't be able to see their names until you give permission because security), and when you select one you'll be able to monitor its output in a video player. You can use the controls in the player to take pictures (which will list below), or record videos (which will prompt for download). Note that the video recording may not work on some browsers, as it requires support for the MediaRecorder API. If that's the case, WebRTC has wider support, but requires a server to encode the stream into a video.",
     links: [{
+        label: "MDN: MediaDevices.getUserMedia",
+        url: "https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia"
+    }],
+    annotatedExamples: null
+},{
+    label: "single-responsibility-principle",
+    type: "pattern-example",
+    heading: "Single Responsibility Principle",
+    description: "The Single Responsibility Principle (also known as SRP), is a part of the SOLID guidelines for writing maintainable OOP code. It states that class should be responsible for one, and only one thing. As classes grow, sometimes they start taking on too many responsibilities, which should be split into new classes. Sometimes this is referred to a class having 'only one reason to change.'",
+    problem: "'God classes' that do too many things, which impacts readability and maintainability",
+    links: [{
+        label: "Wikipedia: Single Responsibility Principle",
+        url: "https://en.wikipedia.org/wiki/Single_responsibility_principle"
+    },{
+        label: "Think you understand the Single Responsibility Principle?",
+        url: "https://hackernoon.com/you-dont-understand-the-single-responsibility-principle-abfdd005b137"
     }],
     annotatedExamples: null
 }];

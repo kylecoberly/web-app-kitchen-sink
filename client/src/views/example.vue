@@ -9,9 +9,13 @@
 
 <script>
     import ApiExample from "@/components/api-example";
+    import PatternExample from "@/components/pattern-example";
 
     export default {
-        components: {"apiExample": ApiExample},
+        components: {
+            ApiExample,
+            PatternExample
+        },
         watch: {
             "$route": "setCurrentExample"
         },

@@ -39,7 +39,7 @@
     .annotated-example {
         padding: 2rem 0rem;
         display: grid;
-        grid-template: auto / 30% 1fr;
+        grid-template: auto / 39% 1fr;
         grid-template-areas:
             "annotation code";
         @media (max-width: $large-screen){
