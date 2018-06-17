@@ -5,7 +5,7 @@
 
 @mixin primary-header-font {
     font-family: "Roboto Mono", monospace;
-    font-size: 21;
+    font-size: 21px;
     word-spacing: -3px;
     letter-spacing: -1px;
 }
@@ -28,13 +28,13 @@
 
 @mixin navigation-header-font {
     font-family: "Roboto", serif;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
 }
 
 @mixin navigation-link-font {
     font-family: "Roboto", serif;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
     text-decoration: underline;
 }
@@ -47,13 +47,17 @@
 
 @mixin body-font {
     font-family: "Roboto", serif;
-    font-size: 16px;
+    font-size: 21px;
     font-weight: 300;
-    line-height: 28px;
+    line-height: 37px;
+    @media (max-width: $large-screen) {
+        font-size: 16px;
+        line-height: 21px;
+    }
 }
 
 @mixin aside-font {
     font-family: "Roboto", serif;
     font-style: italic;
-    font-size: 12px;
+    font-size: 16px;
 }
