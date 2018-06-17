@@ -26,11 +26,6 @@
                         Cameras
                     </router-link>
                 </li>
-                <li>
-                    <router-link :to="{name: 'api', params: {component: 'camera'}}">
-                        Cameras
-                    </router-link>
-                </li>
             </ul>
             <h2>Software Patterns</h2>
             <ul>
